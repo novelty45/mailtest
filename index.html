@@ -11,10 +11,10 @@
     <h1>PyScript Form Example</h1>
     
     <!-- 사용자 입력 폼 -->
-    <form id="userForm">
+    <form id="userForm" onsubmit="return false;">
         <label for="userInput">Enter some text:</label>
         <input type="text" id="userInput" name="userInput">
-        <button type="button" id="submitButton">Submit</button>
+        <py-button label="Submit" id="submitBddddddddutton"></py-button>
     </form>
 
     <!-- 결과 표시 -->
@@ -22,16 +22,14 @@
 
     <!-- PyScript 코드 -->
     <py-script>
-        from pyscript import Element
-
         def process_input(event):
             # 사용자 입력 값 가져오기
-            user_input = Element("userInput").value
+            user_input = Element("userInput").element.value
             
             # 결과를 처리하여 표시
-            Element("result").write(f"You entered: {user_input}")
+            Element("result").element.innerHTML = f"You entered: {user_input}"
         
-        # JavaScript 이벤트 리스너 설정
+        # PyScript에서 JavaScript 이벤트 리스너 설정
         submit_button = Element("submitButton")
         submit_button.element.addEventListener("click", process_input)
     </py-script>
