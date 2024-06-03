@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>PyScript Form Example</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <h1>PyScript Form Example</h1>
+    
+    <!-- 사용자 입력 폼 -->
+    <form id="userForm">
+        <label for="userInput">Enter some text:</label>
+        <input type="text" id="userInput" name="userInput">
+        <button type="button" onclick="processInput()">Submit</button>
+    </form>
+
+    <!-- 결과 표시 -->
+    <div id="result"></div>
+
+    <!-- PyScript 코드 -->
+    <py-script>
+        def processInput():
+            # 사용자 입력 값 가져오기
+            user_input = Element("userInput").value
+            
+            # 결과를 처리하여 표시
+            Element("result").write(f"You entered: {user_input}")
+
+    </py-script>
 </body>
 </html>
