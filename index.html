@@ -14,7 +14,7 @@
     <form id="userForm">
         <label for="userInput">Enter some text:</label>
         <input type="text" id="userInput" name="userInput">
-        <button type="button" onclick="processInput()">Submit</button>
+        <button type="button" id="submitButton">Submit</button>
     </form>
 
     <!-- 결과 표시 -->
@@ -22,13 +22,18 @@
 
     <!-- PyScript 코드 -->
     <py-script>
-        def processInput():
+        from pyscript import Element
+
+        def process_input(event):
             # 사용자 입력 값 가져오기
             user_input = Element("userInput").value
             
             # 결과를 처리하여 표시
             Element("result").write(f"You entered: {user_input}")
-
+        
+        # JavaScript 이벤트 리스너 설정
+        submit_button = Element("submitButton")
+        submit_button.element.addEventListener("click", process_input)
     </py-script>
 </body>
 </html>
