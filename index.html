@@ -14,7 +14,7 @@
     <form id="userForm" onsubmit="return false;">
         <label for="userInput">Enter some text:</label>
         <input type="text" id="userInput" name="userInput">
-        <button type="buttodddddddn" id="submitButton">Submit</button>
+        <button type="button" id="submitButton">Submit</button>
     </form>
 
     <!-- 결과 표시 -->
@@ -22,16 +22,22 @@
 
     <!-- PyScript 코드 -->
     <py-script>
+        from js import document
+        
         def process_input(event):
             # 사용자 입력 값 가져오기
-            user_input = Element("userInput").element.value
+            user_input = document.getElementById("userInput").value
+            
+            # 입력값을 대문자로 변환
+            processed_input = user_input.upper()
             
             # 결과를 처리하여 표시
-            Element("result").element.innerHTML = f"You entered: {user_input}"
+            result_element = document.getElementById("result")
+            result_element.innerHTML = f"Processed input: {processed_input}"
         
-        # PyScript에서 JavaScript 이벤트 리스너 설정
-        submit_button = Element("submitButton")
-        submit_button.element.addEventListener("click", process_input)
+        # JavaScript 이벤트 리스너 설정
+        submit_button = document.getElementById("submitButton")
+        submit_button.addEventListener("click", process_input)
     </py-script>
 </body>
 </html>
